@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
@@ -36,6 +37,7 @@ import {
 import { Button } from './components/Button';
 import { Card } from './components/Card';
 import { CircularProgress } from './components/ProgressBar';
+import { MultiSelect } from './components/MultiSelect';
 import { 
   analyzeCareer, 
   quickPolishAspirations, 
@@ -59,10 +61,10 @@ function App() {
   
   // User Preferences
   const [preferences, setPreferences] = useState<UserPreferences>({
-    targetRole: '',
-    targetIndustry: '',
-    targetCompanyType: '',
-    targetLocation: ''
+    targetRole: [],
+    targetIndustry: [],
+    targetCompanyType: [],
+    targetLocation: []
   });
 
   // Feature States
@@ -485,31 +487,32 @@ function App() {
                 />
              </div>
 
-             {/* Dropdowns */}
-             <div className="grid grid-cols-2 gap-4">
-               {[
-                 { label: "Target Role", value: preferences.targetRole, key: "targetRole", options: JOB_FUNCTIONS },
-                 { label: "Industry", value: preferences.targetIndustry, key: "targetIndustry", options: INDUSTRIES },
-                 { label: "Company Type", value: preferences.targetCompanyType, key: "targetCompanyType", options: COMPANY_TYPES },
-                 { label: "Location", value: preferences.targetLocation, key: "targetLocation", options: LOCATIONS }
-               ].map((field, idx) => (
-                 <div key={idx}>
-                    <label className="text-xs text-gray-500 mb-1.5 block font-medium">{field.label}</label>
-                    <div className="relative">
-                      <select 
-                        className="w-full appearance-none bg-white/5 rounded-lg p-2.5 text-sm text-white border border-white/10 outline-none focus:border-white/30 transition-colors pr-8 cursor-pointer"
-                        value={field.value}
-                        onChange={(e) => setPreferences({...preferences, [field.key]: e.target.value})}
-                      >
-                        <option value="" className="bg-black text-gray-500">Select...</option>
-                        {field.options.map(o => <option key={o} value={o} className="bg-black">{o}</option>)}
-                      </select>
-                      <div className="absolute right-3 top-3 pointer-events-none text-gray-500">
-                        <ChevronRight size={14} className="rotate-90" />
-                      </div>
-                    </div>
-                 </div>
-               ))}
+             {/* Dropdowns (Multi-Select) */}
+             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-6">
+               <MultiSelect 
+                 label="Target Role" 
+                 options={JOB_FUNCTIONS} 
+                 selected={preferences.targetRole} 
+                 onChange={(val) => setPreferences(prev => ({...prev, targetRole: val}))}
+               />
+               <MultiSelect 
+                 label="Industry" 
+                 options={INDUSTRIES} 
+                 selected={preferences.targetIndustry} 
+                 onChange={(val) => setPreferences(prev => ({...prev, targetIndustry: val}))}
+               />
+               <MultiSelect 
+                 label="Company Type" 
+                 options={COMPANY_TYPES} 
+                 selected={preferences.targetCompanyType} 
+                 onChange={(val) => setPreferences(prev => ({...prev, targetCompanyType: val}))}
+               />
+               <MultiSelect 
+                 label="Location" 
+                 options={LOCATIONS} 
+                 selected={preferences.targetLocation} 
+                 onChange={(val) => setPreferences(prev => ({...prev, targetLocation: val}))}
+               />
              </div>
           </div>
 

@@ -1,3 +1,4 @@
+
 export interface Education {
   institution: string;
   degree: string;
@@ -103,8 +104,8 @@ export interface ChatMessage {
 export type ImageSize = '1K' | '2K' | '4K';
 
 export interface UserPreferences {
-  targetRole: string;
-  targetIndustry: string;
-  targetCompanyType: string;
-  targetLocation: string;
+  targetRole: string[];
+  targetIndustry: string[];
+  targetCompanyType: string[];
+  targetLocation: string[];
 }
