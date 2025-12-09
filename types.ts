@@ -35,6 +35,18 @@ export interface UserPersona {
   archetype: "The Builder" | "The Strategist" | "The Creator" | "The Operator" | "The Analyst" | "The Communicator" | "The Visionary";
 }
 
+export interface LineReview {
+  original_text: string;
+  feedback: string;
+  improvement_suggestion: string;
+  severity: 'high' | 'medium' | 'low' | 'good';
+}
+
+export interface SectionAnalysis {
+  section: string;
+  reviews: LineReview[];
+}
+
 export interface AtsAudit {
   score: number;
   verdict: string;
@@ -42,6 +54,7 @@ export interface AtsAudit {
   critical_fixes: { section: string; fix: string }[];
   formatting_tips: string[];
   keyword_gaps: string[];
+  line_by_line_analysis: SectionAnalysis[];
 }
 
 export interface SwotAnalysis {

@@ -81,9 +81,30 @@ const careerPixelSchema: Schema = {
           }
         },
         formatting_tips: { type: Type.ARRAY, items: { type: Type.STRING } },
-        keyword_gaps: { type: Type.ARRAY, items: { type: Type.STRING } }
+        keyword_gaps: { type: Type.ARRAY, items: { type: Type.STRING } },
+        line_by_line_analysis: {
+          type: Type.ARRAY,
+          items: {
+            type: Type.OBJECT,
+            properties: {
+              section: { type: Type.STRING },
+              reviews: {
+                type: Type.ARRAY,
+                items: {
+                  type: Type.OBJECT,
+                  properties: {
+                    original_text: { type: Type.STRING },
+                    feedback: { type: Type.STRING },
+                    improvement_suggestion: { type: Type.STRING },
+                    severity: { type: Type.STRING }
+                  }
+                }
+              }
+            }
+          }
+        }
       },
-      required: ["score", "verdict"]
+      required: ["score", "verdict", "line_by_line_analysis"]
     },
     swot_analysis: {
       type: Type.OBJECT,
@@ -154,23 +175,28 @@ IMPORTANT: Do NOT use emojis. Use clean, professional language only.
    - Score out of 100.
    - Provide granular, actionable fixes. Use technical language where appropriate.
 
-3. SWOT ANALYSIS
+3. LINE-BY-LINE ANALYSIS
+   - Perform a granular audit of specific resume lines.
+   - For 'Experience' and 'Projects', select 3-5 specific bullet points per role that need improvement.
+   - For 'Summary', analyze the sentences.
+   - Field 'original_text': The exact text from resume.
+   - Field 'feedback': Why is it weak? (e.g., passive voice, lack of metrics, generic).
+   - Field 'improvement_suggestion': A rewrite using strong action verbs and quantified metrics (placeholders if needed).
+   - Field 'severity': 'high' (critical fix), 'medium' (should fix), 'low' (nitpick), 'good' (example of good writing).
+
+4. SWOT ANALYSIS
    - Strengths: Key competitive advantages.
    - Weaknesses: Critical gaps or liabilities.
    - Opportunities: High-leverage market openings.
    - Threats: Market risks and obsolescence factors.
 
-4. CAREER MAP & BEST FIT ROLES
+5. CAREER MAP & BEST FIT ROLES
    - Identify EXACTLY 3 "Best Fit Roles".
    - Calculate match percentage and estimated salary range.
    - Top Companies: Suggest 6-8 industry leaders.
 
-5. GAP ANALYSIS
+6. GAP ANALYSIS
    - Skill/Experience/Project Bridge: Be specific and actionable.
-
-6. AVATAR PROMPT
-   - Infer a prompt for a professional, photorealistic representation of a modern professional in their field.
-   - Example: "Professional data scientist analyzing holographic charts in a modern glass office, cinematic lighting, 8k."
 
 Be professional. Be strategic. Be concise. No fluff. No emojis.
 `;

@@ -48,6 +48,10 @@ import {
 import { extractTextFromPDF } from './services/pdfService';
 import { CareerPixelResponse, ViewState, ChatMessage, ImageSize, UserPreferences, BestFitRole } from './types';
 
+// Fix for framer-motion types
+const MotionDiv = motion.div as any;
+const MotionH1 = motion.h1 as any;
+
 function App() {
   const [view, setView] = useState<ViewState>(ViewState.LANDING);
   const [resumeText, setResumeText] = useState('');
@@ -256,14 +260,14 @@ function App() {
       <SpaceBackground />
 
       {/* Hero Section */}
-      <motion.div 
+      <MotionDiv 
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="max-w-7xl mx-auto text-center relative z-10 space-y-10"
       >
         {/* Badge */}
-        <motion.div 
+        <MotionDiv 
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.2, duration: 0.6 }}
@@ -271,17 +275,17 @@ function App() {
         >
           <Sparkles size={12} className="text-[#FFD700]" />
           <span className="text-gray-300">AI-Powered Career Intelligence v2.5</span>
-        </motion.div>
+        </MotionDiv>
         
         {/* Main Heading */}
         <div className="relative">
-          <motion.div
+          <MotionDiv
             initial={{ width: 0 }}
             animate={{ width: "100%" }}
             transition={{ delay: 0.5, duration: 1 }}
             className="absolute -top-12 left-0 right-0 h-32 bg-gradient-to-r from-transparent via-[#00E3FF]/10 to-transparent blur-3xl -z-10"
-          ></motion.div>
-          <motion.h1 
+          ></MotionDiv>
+          <MotionH1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
@@ -291,11 +295,11 @@ function App() {
               Career
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFD700] to-[#FFA500]">Pixel</span>
             </span>
-          </motion.h1>
+          </MotionH1>
         </div>
         
         {/* Subheading */}
-        <motion.div
+        <MotionDiv
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.8 }}
@@ -315,10 +319,10 @@ function App() {
             Your AI career agent that finds roles you'll actually thrive in, 
             then helps you execute personalized outreach that gets responses.
           </p>
-        </motion.div>
+        </MotionDiv>
 
         {/* CTA Buttons */}
-        <motion.div
+        <MotionDiv
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8, duration: 0.8 }}
@@ -337,10 +341,10 @@ function App() {
           >
             See How It Works
           </Button>
-        </motion.div>
+        </MotionDiv>
 
         {/* Feature Pills - No Emojis */}
-        <motion.div
+        <MotionDiv
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1, duration: 0.8 }}
@@ -359,11 +363,11 @@ function App() {
               <span>{feature.text}</span>
             </div>
           ))}
-        </motion.div>
-      </motion.div>
+        </MotionDiv>
+      </MotionDiv>
 
       {/* Feature Grid - Problem Section */}
-      <motion.div
+      <MotionDiv
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.2, duration: 1 }}
@@ -402,7 +406,7 @@ function App() {
             </motion.div>
           ))}
         </div>
-      </motion.div>
+      </MotionDiv>
     </div>
   );
 
@@ -410,7 +414,7 @@ function App() {
     <div className="min-h-screen flex flex-col items-center justify-center p-6 max-w-6xl mx-auto relative">
       <SpaceBackground />
       
-      <motion.div 
+      <MotionDiv 
         initial={{ opacity: 0, scale: 0.98 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.4 }}
@@ -524,7 +528,7 @@ function App() {
             Start Analysis
           </Button>
         </div>
-      </motion.div>
+      </MotionDiv>
     </div>
   );
 
@@ -541,7 +545,7 @@ function App() {
          <SpaceBackground />
          <div className="relative mb-12">
             <div className="absolute inset-0 bg-[#00E3FF] blur-[60px] opacity-10 rounded-full animate-pulse"></div>
-            <motion.div 
+            <MotionDiv 
               animate={{ rotate: 360 }}
               transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
               className="w-24 h-24 border-2 border-white/10 border-t-white rounded-full relative z-10"
@@ -569,7 +573,7 @@ function App() {
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end pointer-events-none">
        <AnimatePresence>
          {isChatOpen && (
-           <motion.div
+           <MotionDiv
              initial={{ opacity: 0, y: 20, scale: 0.95 }}
              animate={{ opacity: 1, y: 0, scale: 1 }}
              exit={{ opacity: 0, y: 20, scale: 0.95 }}
@@ -637,7 +641,7 @@ function App() {
                   </button>
                 </form>
              </div>
-           </motion.div>
+           </MotionDiv>
          )}
        </AnimatePresence>
 
@@ -709,7 +713,7 @@ function App() {
            </div>
 
            <AnimatePresence mode="wait">
-             <motion.div
+             <MotionDiv
                key={activeTab}
                initial={{ opacity: 0, y: 10 }}
                animate={{ opacity: 1, y: 0 }}
@@ -833,10 +837,10 @@ function App() {
                       </Card>
                    </div>
                    
-                   {/* Critical Fixes */}
+                   {/* Critical Fixes and Line Reviews */}
                    <div className="lg:col-span-8 space-y-6">
                      <Card title="Critical Improvements" accent="gold">
-                       <div className="space-y-3 max-h-[500px] overflow-y-auto pr-2 custom-scrollbar">
+                       <div className="space-y-3 max-h-[300px] overflow-y-auto pr-2 custom-scrollbar">
                          {data?.ats_audit?.critical_fixes?.map((item, i) => (
                            <div key={i} className="flex flex-col md:flex-row gap-4 p-4 rounded-lg bg-white/5 border border-white/5">
                              <div className="md:w-28 shrink-0">
@@ -852,6 +856,54 @@ function App() {
                          ))}
                        </div>
                      </Card>
+
+                     {/* Line by Line Analysis */}
+                     <div className="mt-8">
+                        <div className="flex items-center gap-3 mb-6">
+                          <div className="w-1 h-6 bg-[#00E3FF] rounded-full"></div>
+                          <h2 className="text-xl font-bold text-white">Line-by-Line Review</h2>
+                        </div>
+                        
+                        <div className="space-y-6">
+                          {data?.ats_audit?.line_by_line_analysis?.map((section, sIdx) => (
+                            <Card key={sIdx} title={section.section} accent="white">
+                              <div className="space-y-4">
+                                {section.reviews.map((review, rIdx) => (
+                                  <div key={rIdx} className="border-b border-white/5 pb-4 last:border-0 last:pb-0">
+                                     <div className="flex gap-4">
+                                        <div className={`mt-1 w-2 h-2 rounded-full shrink-0 ${
+                                          review.severity === 'high' ? 'bg-red-500' :
+                                          review.severity === 'medium' ? 'bg-yellow-500' :
+                                          review.severity === 'good' ? 'bg-green-500' : 'bg-blue-500'
+                                        }`} />
+                                        <div className="space-y-2 w-full">
+                                           <div className="bg-white/5 p-3 rounded-lg border border-white/5">
+                                              <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">Original</p>
+                                              <p className="text-sm text-gray-300 font-mono italic">"{review.original_text}"</p>
+                                           </div>
+                                           
+                                           <div className="flex gap-2 items-start">
+                                              <MessageSquare size={14} className="text-[#00E3FF] mt-1 shrink-0" />
+                                              <p className="text-sm text-white">{review.feedback}</p>
+                                           </div>
+
+                                           {review.improvement_suggestion && (
+                                             <div className="bg-[#00E3FF]/5 p-3 rounded-lg border border-[#00E3FF]/20 mt-2">
+                                                <p className="text-xs text-[#00E3FF] uppercase tracking-wider mb-1 flex items-center gap-1">
+                                                  <Sparkles size={10} /> Suggestion
+                                                </p>
+                                                <p className="text-sm text-white font-medium">{review.improvement_suggestion}</p>
+                                             </div>
+                                           )}
+                                        </div>
+                                     </div>
+                                  </div>
+                                ))}
+                              </div>
+                            </Card>
+                          ))}
+                        </div>
+                      </div>
 
                      <Card title="Missing Keywords" accent="turquoise">
                        <div className="flex flex-wrap gap-2">
@@ -1070,7 +1122,7 @@ function App() {
                    </div>
                  </div>
                )}
-             </motion.div>
+             </MotionDiv>
            </AnimatePresence>
         </div>
         <ChatWidget />
