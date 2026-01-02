@@ -4,10 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CareerPixel | AI Career Architect</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'system-ui', 'sans-serif'],
+            },
+          },
+        },
+      }
+    </script>
     <style>
       body {
         font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -17,7 +28,6 @@
         overflow-x: hidden;
       }
       
-      /* SaaS-style Custom Scrollbar */
       ::-webkit-scrollbar {
         width: 6px;
       }
@@ -32,7 +42,6 @@
         background: rgba(255, 255, 255, 0.2);
       }
       
-      /* Modern Gradient Background */
       .bg-gradient-mesh {
         background: 
           radial-gradient(circle at 15% 50%, rgba(0, 227, 255, 0.08), transparent 25%),
@@ -46,7 +55,6 @@
         pointer-events: none;
       }
 
-      /* Premium Glass Panel */
       .glass-panel {
         background: rgba(255, 255, 255, 0.03);
         backdrop-filter: blur(24px);
@@ -60,12 +68,10 @@
         background: rgba(255, 255, 255, 0.05);
       }
       
-      /* Sleek Border */
       .border-sleek {
         border: 1px solid rgba(255, 255, 255, 0.1);
       }
 
-      /* Animated Gradient Text */
       .text-gradient {
         background: linear-gradient(135deg, #FFD700 0%, #FFFFFF 50%, #00E3FF 100%);
         -webkit-background-clip: text;
@@ -80,7 +86,6 @@
         100% { background-position: 0% 50%; }
       }
 
-      /* Card Hover Lift */
       .card-hover {
         transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
       }
@@ -89,35 +94,69 @@
         box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5);
       }
 
-      /* Smooth scroll */
       html {
         scroll-behavior: smooth;
       }
 
-      /* Selection */
       ::selection {
         background: rgba(0, 227, 255, 0.2);
         color: white;
       }
+
+      .space-particles {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+      }
+
+      .star {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        background: white;
+        border-radius: 50%;
+        animation: twinkle linear infinite;
+      }
+
+      @keyframes twinkle {
+        0%, 100% { opacity: 0.3; transform: scale(1); }
+        50% { opacity: 1; transform: scale(1.2); }
+      }
+
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 4px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.02);
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+      }
     </style>
-  <script type="importmap">
+    <script type="importmap">
 {
   "imports": {
-    "react": "https://aistudiocdn.com/react@^19.2.1",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
-    "react/": "https://aistudiocdn.com/react@^19.2.1/",
-    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.31.0",
-    "recharts": "https://aistudiocdn.com/recharts@^3.5.1",
-    "framer-motion": "https://aistudiocdn.com/framer-motion@^12.23.25",
-    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.556.0",
-    "pdfjs-dist": "https://aistudiocdn.com/pdfjs-dist@4.10.38/build/pdf.min.mjs",
-    "pdfjs-dist/": "https://aistudiocdn.com/pdfjs-dist@4.10.38/"
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom": "https://esm.sh/react-dom@^19.2.3",
+    "react-dom/client": "https://esm.sh/react-dom@^19.2.3/client",
+    "@google/genai": "https://esm.sh/@google/genai@^1.34.0",
+    "framer-motion": "https://esm.sh/framer-motion@^12.23.26",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "pdfjs-dist": "https://esm.sh/pdfjs-dist@^4.10.38",
+    "recharts": "https://esm.sh/recharts@^3.5.1",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "vite": "https://esm.sh/vite@^7.3.0",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
   }
 }
 </script>
-</head>
+  </head>
   <body>
     <div id="root"></div>
     <div class="bg-gradient-mesh"></div>
+    <script type="module" src="./index.tsx"></script>
   </body>
 </html>
