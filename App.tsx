@@ -5,14 +5,12 @@ import {
   Brain, 
   Upload, 
   Target, 
-  ChevronRight, 
   Sparkles, 
   FileText, 
   Map, 
   ListTodo,
   AlertTriangle,
   CheckCircle2,
-  TrendingUp,
   User,
   ShieldAlert,
   Loader2,
@@ -23,12 +21,9 @@ import {
   X,
   Send,
   Briefcase,
-  MapPin,
   Building2,
-  Globe,
   Fingerprint,
   Bot,
-  Mail,
   Crosshair,
   ArrowRight,
   Cpu,
@@ -46,7 +41,7 @@ import {
   generateCustomRoadmap
 } from './services/geminiService';
 import { extractTextFromPDF } from './services/pdfService';
-import { CareerPixelResponse, ViewState, ChatMessage, ImageSize, UserPreferences, BestFitRole } from './types';
+import { CareerPixelResponse, ViewState, ChatMessage, UserPreferences } from './types';
 
 // Fix for framer-motion types
 const MotionDiv = motion.div as any;
