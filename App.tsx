@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import { 
   Brain, 
   Upload, 
@@ -1133,7 +1133,7 @@ function App() {
       {view === ViewState.PROCESSING && renderProcessing()}
       {view === ViewState.ERROR && renderError()}
       {view === ViewState.DASHBOARD && renderDashboard()}
-      <Analytics />
+      <SpeedInsights />
     </div>
   );
 }
